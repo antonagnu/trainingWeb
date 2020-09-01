@@ -1,0 +1,42 @@
+{% extends "template.html" %}
+
+{% block header %}
+
+{% if duplicate %}
+
+<h1>The activity seems to be a duplicated already existing in your log</h1>
+<a href="/details?date={{date}}&dist={{distance}}"><button type="button" class="btn btn-primary btn-xs">View Duplicate</button></a>
+
+{% endif%}
+
+
+
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <img src="/static/location.png" class="card-img-top" style="width:200px;height:200px;">
+          <div class="card-body">
+            <h1 class="card-title">{{ date }}</h1>
+            <h3 class="card-title">{{ name }}</h3>
+            <p class="card-text">You were {{ acttype }} for {{ distance}} kms and it took you {{ time }} to do it</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Your maximun HR was {{ hr_values[1] }}</li>
+            <li class="list-group-item">Your average HR was {{ hr_values[0] }}</li>
+            <li class="list-group-item">Your average pace was {{ pace }}</li>
+            <li class="list-group-item">Your average stride cadence was {{ cadence[1] }}</li>
+            <li class="list-group-item">Your max stride cadence was {{ cadence[0] }}</li>
+            <li class="list-group-item">Your stride lenght was {{ stride }}</li>
+            <li class="list-group-item">You climbed {{ elev[0] }} meters</li>
+            <li class="list-group-item">You went downhill {{ elev[1] }} meters</li>
+            <li class="list-group-item"><a href="/gps?insert={{'Insert'}}"><button type="button" class="btn btn-primary btn-xs">Insert</button></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

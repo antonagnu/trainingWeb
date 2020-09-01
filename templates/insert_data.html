@@ -1,0 +1,47 @@
+{% extends "template.html" %}
+
+{% block header %}
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">It's up to you</h1>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm" align="center">
+      <div class="card" style="width: 18rem;">
+        <img src="/static/pencil.png" class="card-img-top" style="width:200px;height:200px;">
+        <div class="card-body">
+          <p class="card-text">Who trust a computer??? let's do it manually</p>
+          <a href="/insert_data" class="btn btn-primary stretched-link">Old school</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm" align="center">
+      <div class="card" style="width: 18rem;">
+        <img src="/static/save.png" class="card-img-top" style="width:200px;height:200px;">
+        <div class="card-body">
+          <p class="card-text">Insert information from a gpx file</p>
+          <a href="/upload_file" class="btn btn-primary stretched-link">Let's use your file</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm" align="center">
+      <div class="card" style="width: 18rem;">
+        <img src="/static/strava.png" class="card-img-top" style="width:200px;height:200px;">
+        <div class="card-body">
+          <p class="card-text">Is it in Strava?</p>
+          <a href="http://www.strava.com/oauth/authorize?client_id=44164&response_type=code&redirect_uri=http://localhost:5000/exchange_token&approval_prompt=force&scope=profile:read_all,activity:read_all" class="btn btn-primary stretched-link">Strava</a>
+        </div>
+      </div>
+    </div>
+   
+
+
+
+
+{% endblock %}

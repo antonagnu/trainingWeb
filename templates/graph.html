@@ -1,0 +1,33 @@
+{% extends "template.html" %}
+
+{% block header %}
+
+<div class="container">
+    <div class="row">
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="w-100"></div>
+    </div>
+</div>
+
+
+<div class="container">
+  <div class="row row-cols-2">
+    <div class="col"><img src="/static/graph/kms.png" class="img-fluid" alt="Responsive image"></div>
+    <div class="col"><img src="/static/graph/elev.png" class="img-fluid" alt="Responsive image"></div>
+    <div class="col" align="center">Tota Yearly Kms</div>
+    <div class="col" align="center">Total elevation gain by year</div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row row-cols-2">
+    <div class="col"><img src="/static/graph/kmsToday.png" class="img-fluid" alt="Responsive image"></div>
+    <div class="col"></div>
+    <div class="col" align="center">Kms as per today</div>
+    <div class="col" align="center"></div>
+  </div>
+</div>
+
+{% endblock %}

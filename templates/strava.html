@@ -1,0 +1,12 @@
+{% extends "template.html" %}
+
+{% block header %}
+<!-- Training table from SQL-->
+
+<h1>Datos de Strava</h1>
+
+{{ activityList.to_html() | safe }}
+
+
+
+{% endblock %}

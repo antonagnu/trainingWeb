@@ -1,0 +1,31 @@
+{% extends "template.html" %}
+
+{% block header %}
+
+
+<div class="container">
+   <div class="row">
+     <div class="col">
+ 
+       <h1>Upload a file</h1>
+       <hr>
+ 
+       <form action="/upload_file" method="POST" enctype="multipart/form-data">
+ 
+         <div class="form-group">
+
+           <div class="custom-file">
+             <input type="file" class="custom-file-input" name="file" id="file">
+             <label class="custom-file-label" for="image">Select file...</label>
+           </div>
+         </div>
+ 
+         <button type="submit" class="btn btn-primary">Check data</button>
+ 
+       </form>
+ 
+     </div>
+   </div>
+ </div>
+
+{% endblock %}

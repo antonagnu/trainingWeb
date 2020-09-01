@@ -1,0 +1,31 @@
+{% extends "template.html" %}
+
+{% block header %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src="/static/finish.png" class="card-img-top" style="width:200px;height:200px;">
+        <div class="card-body">
+          <h1 class="card-title">{{ '{:.10}'.format(results[2]) }}</h1>
+          <h3 class="card-title">{{ results[4] }}</h3>
+          <p class="card-text">You were {{ results[1] }} for {{ results[5]}} kms and it took you {{ results[7] }} to do it</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Your maximun HR was {{ results[9] }}</li>
+          <li class="list-group-item">Your average HR was {{ results[8] }}</li>
+          <li class="list-group-item">Your average pace was {{ results[12] }}</li>
+          <li class="list-group-item">Your average stride cadence was {{ results[10] }}</li>
+          <li class="list-group-item">Your stride lenght was {{ results[15] }}</li>
+          <li class="list-group-item">You climbed {{ results[13] }} meters</li>
+          <li class="list-group-item"><a href="/delete?actDate={{results[2]}}&actDistance={{results[5]}}&actTime={{results[7]}}"><button type="button" class="btn btn-primary btn-xs">Delete</button></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col">
+    </div>
+  </div>
+</div>
+
+{% endblock %}
