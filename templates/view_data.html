@@ -2,10 +2,16 @@
 
 {% block header %}
 <!-- Training table from SQL-->
+
+<blockquote class="blockquote text-center">
+  <p class="mb-0">Below table contains your last 100 activities; if you want to navigate the full list, please <a href="/view_data_all" class="badge badge-info">click here</a></p>
+</blockquote>
+
 <form method="POST">
   <table class="table table-hover">
   <thead class="thead-dark">
       <tr>
+        <th>Delete</th>
         <th>Details</th>
         <th>Type</th>
         <th>Date</th>
@@ -21,7 +27,8 @@
   <tbody>
       {% for results in results %}
       <tr>
-          <td><a href="/details?date={{results[2]}}&dist={{results[5]}}"><button type="button" class="btn btn-primary btn-xs">Details</button></a></td>
+          <td><a href="/confirm_delete?date={{results[2]}}&dist={{results[5]}}"  class="badge badge-danger">Delete</a></td>
+          <td><a href="/details?date={{results[2]}}&dist={{results[5]}}"  class="badge badge-info">Details</a></td>
           <td>{{ results[1] }}</td>
           <td>{{ '{:.10}'.format(results[2]) }}</td>
           <td>{{ results[5] }}</td>

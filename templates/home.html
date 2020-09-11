@@ -4,36 +4,52 @@
 
 <div class="container">
 
-  <h1><p class="text-center">Wellcome to my training web</p></h1>
+  <h1><p class="text-center"></p></h1>
 
 </div>
 
+
+
+
+{% if firstTime == True %}
+
+<div class="col-sm" align="center">
+  <div class="card" style="width: 18rem;">
+    <img src="/static/map.png" class="rounded mx-auto d-block" style="width:200px;height:200px;">
+    <div class="card-body">
+      <p class="card-text">Let's take the first steps..</p>
+      <a href="/insert_data_options" class="btn btn-primary stretched-link">Let's record!</a>
+    </div>
+  </div>
+</div>
+
+{%else %}
 
 <div class="container">
   <div class="row">
     <div class="col-sm" align="center">
       <div class="card" style="width: 18rem;">
-        <img src="/static/run.png" class="card-img-top" style="width:200px;height:200px;">
+        <img src="/static/run.png" class="rounded mx-auto d-block" style="width:200px;height:200px;">
         <div class="card-body">
-          <p class="card-text">Click here and access to all the training history.</p>
+          <p class="card-text">Take a look to your running log</p>
           <a href="/view_data" class="btn btn-primary stretched-link">Let's go!</a>
         </div>
       </div>
     </div>
     <div class="col-sm" align="center">
       <div class="card" style="width: 18rem;">
-        <img src="/static/map.png" class="card-img-top" style="width:200px;height:200px;">
+        <img src="/static/map.png" class="rounded mx-auto d-block" style="width:200px;height:200px;">
         <div class="card-body">
-          <p class="card-text">Click here insert new training information.</p>
+          <p class="card-text">Have you been training?</p>
           <a href="/insert_data_options" class="btn btn-primary stretched-link">Let's record!</a>
         </div>
       </div>
     </div>
     <div class="col-sm" align="center">
       <div class="card" style="width: 18rem;">
-        <img src="/static/scale.png" class="card-img-top" style="width:200px;height:200px;">
+        <img src="/static/scale.png" class="rounded mx-auto d-block" style="width:200px;height:200px;">
         <div class="card-body">
-          <p class="card-text">Click here to see interesting information.</p>
+          <p class="card-text">Let's see some stats</p>
           <a href="/overview" class="btn btn-primary stretched-link">Show me!</a>
         </div>
       </div>
@@ -42,9 +58,9 @@
 
     <div class="col-sm" align="center">
       <div class="card" style="width: 18rem;">
-        <img src="/static/result.png" class="card-img-top" style="width:200px;height:200px;">
+        <img src="/static/result.png" class="rounded mx-auto d-block" style="width:200px;height:200px;">
         <div class="card-body">
-          <p class="card-text">Click here to see graph information</p>
+          <p class="card-text">We all love graphs</p>
           <a href="/graph" class="btn btn-primary stretched-link">Pie or Bar?</a>
         </div>
       </div>
@@ -52,9 +68,9 @@
 
     <div class="col-sm" align="center">
       <div class="card" style="width: 18rem;">
-        <img src="/static/trophy.png" class="card-img-top" style="width:200px;height:200px;">
+        <img src="/static/trophy.png" class="rounded mx-auto d-block" style="width:200px;height:200px;">
         <div class="card-body">
-          <p class="card-text">Click here to see race results</p>
+          <p class="card-text">We all love races</p>
           <a href="/races" class="btn btn-primary stretched-link">Gold medal?</a>
         </div>
       </div>
@@ -62,7 +78,7 @@
 
     <div class="col-sm" align="center">
       <div class="card" style="width: 18rem;">
-        <img src="/static/calendar.png" class="card-img-top" style="width:200px;height:200px;">
+        <img src="/static/calendar.png" class="rounded mx-auto d-block" style="width:200px;height:200px;">
         <div class="card-body">
           <p class="card-text">Compare today with history</p>
           <a href="/today" class="btn btn-primary stretched-link">Any better?</a>
@@ -80,5 +96,5 @@
 
 </div>
 
-
+{%endif%}
 {% endblock %}

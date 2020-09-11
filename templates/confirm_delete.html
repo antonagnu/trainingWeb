@@ -5,8 +5,6 @@
 <div class="container">
 
   <div class="row">
-
-
   </div>
 
   <div class="row">
@@ -14,7 +12,7 @@
     </div>
     <div class="col">
       <div class="card" style="width: 18rem;">
-        <img src="/static/search.png" class="rounded mx-auto d-block" style="width:100px;height:100px;">
+        <img src="/static/clean.png" class="rounded mx-auto d-block" style="width:100px;height:100px;">
         <div class="card-body">
           <h1 class="card-title">{{ '{:.10}'.format(results[2]) }}</h1>
           <h3 class="card-title">{{ results[4] }}</h3>
@@ -27,7 +25,7 @@
           <li class="list-group-item">Your average stride cadence was {{ results[10] }}</li>
           <li class="list-group-item">Your stride lenght was {{ results[15] }}</li>
           <li class="list-group-item">You climbed {{ results[13] }} meters</li>
-          <li class="list-group-item"><p class="card-text" style="text-align:center"><a href="/update_activity?actDate={{results[2]}}&actDistance={{results[5]}}"  class="badge badge-warning">Update data</a></p></li>
+          
         </ul>
       </div>
     </div>
@@ -35,5 +33,12 @@
     </div>
   </div>
 </div>
+
+
+<blockquote class="blockquote text-center">
+  <p class="mb-0">Are you sure you want to delete this activity??</p>
+  <p class="mb-0"><a href="/delete?actDate={{results[2]}}&actDistance={{results[5]}}&actTime={{results[7]}}" class="badge badge-danger">Delete it!</a></p>
+</blockquote>
+
 
 {% endblock %}

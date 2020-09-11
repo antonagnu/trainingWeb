@@ -1,12 +1,106 @@
 {% extends "template.html" %}
 
 {% block header %}
-<!-- Training table from SQL-->
+<!-- Training table from Strava-->
 
-<h1>Datos de Strava</h1>
+{% if pendingData == False %}
 
-{{ activityList.to_html() | safe }}
+<div class="col-sm" align="center">
+  <div class="card" style="width: 18rem;">
+    <img src="/static/ok.png" class="rounded mx-auto d-block" alt="all ok" style="width:200px;height:200px;">
+    <div class="card-body">
+      <p class="lead">All sync, keep training</p>
+    </div>
+  </div>
+</div>
 
 
+{% else %}
+
+{% if multiAct == True%}
+
+<blockquote class="blockquote text-center">
+  <p class="mb-0">If you want to add all the activities then <a href="/bulk_strava" class="badge badge-warning">click here</a></p>
+</blockquote>
+
+<table class="table table-hover">
+  <thead class="thead-dark">
+      <tr>
+        <th>Details</th>
+        <th>Type</th>
+        <th>Date</th>
+        <th>Distance</th>
+        <th>Time</th>
+        <th>Avg. HR</th>
+        <th>Max. HR</th>
+        <th>Avg. Cadence</th>
+        <th>Avg. Pace</th>
+        <th>Elev. Gain</th>
+      <tr>
+  </thead>
+  <tbody>
+      {% for activityList in activityList %}
+      <tr>
+          <td>
+            <a href="/insert_strava?date={{activityList[4]}}&dist={{activityList[0]}}&time={{activityList[1]}}&avghr={{activityList[7]}}&maxhr={{activityList[8]}}&cad={{activityList[6]}}&pace={{activityList[5]}}&elev={{activityList[2]}}">
+                <button type="button" class="btn btn-primary btn-xs">Insert</button>
+              </a>
+          </td>
+          <td>{{ activityList[3] }}</td>
+          <td>{{ activityList[4] }}</td>
+          <td>{{ activityList[0] }}</td>
+          <td>{{ activityList[1] }}</td>
+          <td>{{ activityList[7] }}</td>
+          <td>{{ activityList[8] }}</td>
+          <td>{{ activityList[6] }}</td>
+          <td>{{ activityList[5] }}</td>
+          <td>{{ activityList[2] }}</td>
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+
+{%else%}
+
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+          <th>Details</th>
+          <th>Type</th>
+          <th>Date</th>
+          <th>Distance</th>
+          <th>Time</th>
+          <th>Avg. HR</th>
+          <th>Max. HR</th>
+          <th>Avg. Cadence</th>
+          <th>Avg. Pace</th>
+          <th>Elev. Gain</th>
+        <tr>
+    </thead>
+    <tbody>
+        {% for activityList in activityList %}
+        <tr>
+            <td>
+              <a href="/insert_strava?date={{activityList[4]}}&dist={{activityList[0]}}&time={{activityList[1]}}&avghr={{activityList[7]}}&maxhr={{activityList[8]}}&cad={{activityList[6]}}&pace={{activityList[5]}}&elev={{activityList[2]}}">
+                  <button type="button" class="btn btn-primary btn-xs">Insert</button>
+                </a>
+            </td>
+            <td>{{ activityList[3] }}</td>
+            <td>{{ activityList[4] }}</td>
+            <td>{{ activityList[0] }}</td>
+            <td>{{ activityList[1] }}</td>
+            <td>{{ activityList[7] }}</td>
+            <td>{{ activityList[8] }}</td>
+            <td>{{ activityList[6] }}</td>
+            <td>{{ activityList[5] }}</td>
+            <td>{{ activityList[2] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+  {%endif%}
+
+{% endif %}
 
 {% endblock %}

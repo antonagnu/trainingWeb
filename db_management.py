@@ -22,6 +22,28 @@ def insert(acType, actDate, actRace, actLocation, actDistance, actCalories, actT
         traceback.print_exc()
         return redirect(url_for('wrong'))
 
+
+def update(acType, actDate, actRace, actLocation, actDistance, actCalories, actTime, actAvgHr, actMaxHr, actAvgCadence, actMaxCadence, actAvgPace, actElevGain, actElevLoss, actStrideLen):
+    
+    #UPDATE activitiesTb SET Calories="100" WHERE date="2020-09-07" and Distance="4.77"
+
+    try:
+        conn=sqlite3.connect("runningLog.sqlite")
+        cur=conn.cursor()
+        #sql = "UPDATE activitiesTb SET Calories = {} WHERE date = {}".format('100', '"2020-09-06"') WORKING
+        sql = "UPDATE activitiesTb SET ActivityType = ?, Date= ?, Race= ?, Title= ?, Distance= ?, Calories= ?, Time= ?, AvgHR= ?, MaxHR= ?, AvgCadence= ?, MAxCadence= ?, AvgPace= ?, ElevGain= ?, ElevLoss= ?, AvgStrideLength= ? WHERE date = ?"
+        update_data = (str(acType), str(actDate), str(actRace), str(actLocation), str(actDistance), str(actCalories), str(actTime), str(actAvgHr), str(actMaxHr), str(actAvgCadence), str(actMaxCadence), str(actAvgPace), str(actElevGain), str(actElevLoss), str(actStrideLen), str(actDate))
+
+
+        cur.execute(update_data,sql)
+        conn.commit()
+        conn.close()
+
+    except:
+        traceback.print_exc()
+        return redirect(url_for('wrong'))
+
+
 def delete(actDate, actDistance, actTime):
 
     try:
@@ -39,6 +61,19 @@ def delete(actDate, actDistance, actTime):
         return redirect(url_for('wrong'))
 
 def view():
+    
+    try:
+        conn=sqlite3.connect("runningLog.sqlite")
+        cur=conn.cursor()
+        cur.execute('SELECT * FROM activitiesTb ORDER BY Date DESC LIMIT 100')
+        result=cur.fetchall()
+        conn.close()
+        return result
+
+    except:
+        return redirect(url_for('wrong'))
+
+def viewAll():
     
     try:
         conn=sqlite3.connect("runningLog.sqlite")
@@ -368,6 +403,88 @@ def getLastActivityDate():
         result=cur.fetchone()
         conn.close()
         return result
+
+    except:
+        return redirect(url_for('wrong'))
+
+def stravaStatus():
+        
+    try:
+        conn=sqlite3.connect("runningLog.sqlite")
+        cur=conn.cursor()
+
+        cur.execute('SELECT * FROM config WHERE name="client"')
+        result=cur.fetchone()
+        conn.close()
+        
+        return result
+
+    except:
+        return redirect(url_for('wrong'))
+
+
+def setStravaConf(client, secret):
+    try:
+        conn=sqlite3.connect("runningLog.sqlite")
+        cur=conn.cursor()
+
+        #first we make sure we don't have any old data for Strava conf
+
+        cur.execute('SELECT * FROM config WHERE name="secret"')
+        resultSecret=cur.fetchone()
+
+        if resultSecret is None:
+            pass
+        else:
+            cur.execute('DELETE FROM config WHERE name="secret"')
+            conn.commit()  
+            conn.close()
+
+        cur.execute('SELECT * FROM config WHERE name="client"')
+        resultClient=cur.fetchone()
+
+        if resultClient is None:
+            pass
+        else:
+            cur.execute('DELETE FROM config WHERE name="client"')
+            conn.commit()  
+            conn.close()
+
+        #now we insert new Strava conf
+
+        insert_data = ('INSERT INTO config (name, value) VALUES (?, ?)')
+        data_sql = ('client',client)
+        cur.execute(insert_data, data_sql)
+        conn.commit()  
+        insert_data = ('INSERT INTO config (name, value) VALUES (?, ?)')
+        data_sql = ('secret',secret)
+        cur.execute(insert_data, data_sql)
+        conn.commit()  
+        
+        conn.close()
+
+
+    except:
+        return redirect(url_for('wrong'))    
+
+
+def stravaConf():
+    
+    try:
+        conn=sqlite3.connect("runningLog.sqlite")
+        cur=conn.cursor()
+
+        cur.execute('SELECT * FROM config')
+        result=cur.fetchall()
+        conn.close()
+
+        config = pd.DataFrame(result)
+
+        config.columns = ['name','value']#set colum names
+
+        config.set_index('name', inplace=True)#set index by colum value
+
+        return config
 
     except:
         return redirect(url_for('wrong'))

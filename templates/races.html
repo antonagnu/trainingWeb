@@ -3,15 +3,34 @@
 {% block header %}
 
 
+{% if raceStaus == False %}
+
 <div class="container">
   <div class="row">
-    <div class="col"><h1>YOUR BEST RESULTS</h1></div>
-    <div class="col"></div>
-    <div class="w-100"></div>
-    <div class="col"><img src="/static/podium.png" class="rounded mx-auto d-block" style="width:100px;height:100px;"></div>
-    <div class="col"></div>
+    <div class="col-sm">
+      
+    </div>
+    <div class="col-sm">
+      <div class="card mb-3">
+        <img src="/static/run.png" class="rounded mx-auto d-block" style="width:100px;height:100px;">
+        <div class="card-body">
+          <h1 class="card-title">No races yet?</h1>
+          <p class="card-text">No worries !!! keep training and plan for a race, it will be fun</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm">
+      
+    </div>
   </div>
 </div>
+
+
+
+{% else %}
+
+
+
 
 
 <div class="container">
@@ -19,60 +38,55 @@
     <div class="col-sm">
       <div class="card" style="width: 18rem;">
         <div class="card-body">
-          <h1 class="card-title">Marathon</h1>
-          <h3 class="card-title">{{ '{:.10}'.format(marathon[2]) }}</h3>
+          <img src="/static/goldmedal.png" class="rounded mx-auto d-block" style="width:50px;height:50px;">
+          <h1 class="card-title"><p style="text-align:center">Marathon</p></h1>
+          <h3 class="card-title"><p style="text-align:center">{{ marathon[4] }}</p></h3>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">{{ marathon[4] }}</li>
+          <li class="list-group-item">{{ '{:.10}'.format(marathon[2]) }}</li>
           <li class="list-group-item">Time:  {{ marathon[7] }}</li>
           <li class="list-group-item">Elev. Gain {{ marathon[13] }}</li>
           <li class="list-group-item">Average HR {{ marathon[8] }}</li>
-          <li class="list-group-item"><a href="/details?date={{marathon[2]}}&dist={{marathon[5]}}"><button type="button" class="btn btn-primary btn-xs">Details</button></a></li>
+          <li class="list-group-item"><p style="text-align:center"><a href="/details?date={{marathon[2]}}&dist={{marathon[5]}}" class="badge badge-info">View details</a></p></li>
         </ul>
       </div>
     </div>
     <div class="col-sm">
       <div class="card" style="width: 18rem;">
         <div class="card-body">
-          <h1 class="card-title">1/2 Marathon</h1>
-          <h3 class="card-title">{{ '{:.10}'.format(half[2]) }}</h3>
+          <img src="/static/goldmedal.png" class="rounded mx-auto d-block" style="width:50px;height:50px;">
+          <h1 class="card-title"><p style="text-align:center">1/2 Marathon</p></h1>
+          <h3 class="card-title"><p style="text-align:center">{{ half[4] }}</p></h3>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">{{ half[4] }}</li>
+          <li class="list-group-item">{{ '{:.10}'.format(half[2]) }}</li>
           <li class="list-group-item">Time:  {{ half[7] }}</li>
           <li class="list-group-item">Elev. Gain {{ half[13] }}</li>
           <li class="list-group-item">Average HR {{ half[8] }}</li>
-          <li class="list-group-item"><a href="/details?date={{marathon[2]}}&dist={{marathon[5]}}"><button type="button" class="btn btn-primary btn-xs">Details</button></a></li>
+          <li class="list-group-item"><p style="text-align:center"><a href="/details?date={{half[2]}}&dist={{half[5]}}" class="badge badge-info">View details</a></p></li>
         </ul>
       </div>
     </div>
     <div class="col-sm">
       <div class="card" style="width: 18rem;">
         <div class="card-body">
-          <h1 class="card-title">10K</h1>
-          <h3 class="card-title">{{ '{:.10}'.format(ten[2]) }}</h3>
+          <img src="/static/goldmedal.png" class="rounded mx-auto d-block" style="width:50px;height:50px;">
+          <h1 class="card-title"><p style="text-align:center">10K</p></h1>
+          <h3 class="card-title"><p style="text-align:center">{{ ten[4] }}</p></h3>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">{{ ten[4] }}</li>
+          <li class="list-group-item">{{ '{:.10}'.format(ten[2]) }}</li>
           <li class="list-group-item">Time:  {{ ten[7] }}</li>
           <li class="list-group-item">Elev. Gain {{ ten[13] }}</li>
           <li class="list-group-item">Average HR {{ ten[8] }}</li>
-          <li class="list-group-item"><a href="/details?date={{marathon[2]}}&dist={{marathon[5]}}"><button type="button" class="btn btn-primary btn-xs">Details</button></a></li>
+          <li class="list-group-item"><p style="text-align:center"><a href="/details?date={{ten[2]}}&dist={{ten[5]}}" class="badge badge-info">View details</a></p></li>
         </ul>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col"><h1>YOUR RACES</h1></div>
-    <div class="col"></div>
-    <div class="w-100"></div>
-    <div class="col"></div>
-    <div class="col"></div>
-  </div>
-</div>
+
 
 <table class="table table-hover">
   <thead class="thead-dark">
@@ -93,9 +107,9 @@
   <tbody>
       {% for races in races %}
       <tr>
-          <td><a href="/details?date={{races[2]}}&dist={{races[5]}}"><button type="button" class="btn btn-primary btn-xs">Details</button></a></td>
+          <td><a href="/details?date={{races[2]}}&dist={{races[5]}}"  class="badge badge-info">Details</a></td>
           <td>{{ races[4] }}</td>
-          <td>{{ races[2] }}</td>
+          <td>{{ '{:.10}'.format(races[2])  }}</td>
           <td>{{ races[5] }}</td>
           <td>{{ races[6] }}</td>
           <td>{{ races[7] }}</td>
@@ -109,5 +123,6 @@
   </tbody>
 </table>
 
+{% endif %}
 
 {% endblock %}

@@ -1,0 +1,59 @@
+{% extends "template.html" %}
+
+{% block header %}
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Let's get your Strava Up&Running</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+  
+            <div>
+            <form method="POST">
+            {# This hidden_tag is a CSRF security feature. #}
+            {{ form.hidden_tag() }}
+
+
+            <div class="row">
+            <div class="col">{{ form.client.label }} {{ form.client(placeholder="Your Strava client") }}</div>
+            <div class="w-100"></div>
+            </div>
+
+            <div class="row">
+            <div class="col">{{ form.secret.label }} {{ form.secret(placeholder="Your Strava secret") }}</div>
+            <div class="w-100"></div>
+            </div>
+
+
+            <div class="row">
+            <div class="col">{{ form.submit }}</div>
+            <div class="w-50"></div>
+            </div>
+            </div>
+
+
+            {% for field in form.errors %}
+            {% for error in form.errors[field] %}
+            <div class="alert alert-error">
+            <strong>Error!</strong> {{error}} {{ field }}
+            </div>
+            {% endfor %}
+            {% endfor %}
+
+            </form>
+            </div>
+  
+    
+    </div>
+    
+</div>
+
+<blockquote class="blockquote text-center">
+  <p class="mb-0">If you don't have this info please <a href="http://developers.strava.com/docs/getting-started/" class="badge badge-success" target="_blank">click here</a></p>
+</blockquote>
+
+{% endblock %}

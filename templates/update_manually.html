@@ -4,11 +4,10 @@
 
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Make sure you do it right</h1>
+    <h1 class="display-4">Give it your personal touch</h1>
   </div>
 </div>
 
-{{activity}}
 
 <div class="container">
   <div class="row">
@@ -21,7 +20,7 @@
 
             <div class="container">
             <div class="row">
-            <div class="col">{{ form.date.label }} {{ form.date() }}</div>
+            <div class="col">{{ form.date.label }} {{ form.date(value=activity[2]) }}</div>
             <div class="w-100"></div>
             </div>
 
@@ -29,51 +28,52 @@
             <div class="col">{{ form.race.label }} {{ form.race() }}</div>
             <div class="w-100"></div>
             </div>
-            
-            <div class="row">
-              <div class="col">{{ form.location.label }} {{ form.location(placeholder="Milton Keynes") }}</div>
-              <div class="w-100"></div>
-              </div>
 
             <div class="row">
-            <div class="col">{{ form.distance.label }} {{ form.distance(placeholder="Distance in meters") }}</div>
+            <div class="col">{{ form.location.label }} {{ form.location(value=activity[4]) }}</div>
+            <div class="w-100"></div>
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col">{{ form.distance.label }} {{ form.distance(value=activity[5]) }}</div>
             <div class="w-100"></div>
             </div>
             
             <div class="row">
-            <div class="col">{{ form.time.label }} {{ form.time(placeholder="hh:mm:ss") }}</div>
+            <div class="col">{{ form.time.label }} {{ form.time(value=activity[7]) }}</div>
             <div class="w-100"></div>
             </div>
             <div class="row">
-            <div class="col">{{ form.avgHr.label }} {{ form.avgHr(placeholder="Avg Heart Rate") }}</div>
+            <div class="col">{{ form.avgHr.label }} {{ form.avgHr(value=activity[8]) }}</div>
             <div class="w-100"></div>
             </div>
             <div class="row">
-            <div class="col">{{ form.maxHr.label }} {{ form.maxHr(placeholder="Carefull with your Max Hr") }}</div>
+            <div class="col">{{ form.maxHr.label }} {{ form.maxHr(value=activity[9]) }}</div>
             <div class="w-100"></div>
             </div>
             <div class="row">
-            <div class="col">{{ form.avgCadence.label }} {{ form.avgCadence(placeholder="Feet speed!!") }}</div>
+            <div class="col">{{ form.avgCadence.label }} {{ form.avgCadence(value=activity[10]) }}</div>
             <div class="w-100"></div>
             </div>
             <div class="row">
-            <div class="col">{{ form.maxCadence.label }} {{ form.maxCadence(placeholder="Feet speed!!") }}</div>
+            <div class="col">{{ form.maxCadence.label }} {{ form.maxCadence(value=activity[11]) }}</div>
             <div class="w-100"></div>
             </div>
             <div class="row">
-            <div class="col">{{ form.avgPace.label }} {{ form.avgPace(placeholder="mm:ss") }}</div>
+            <div class="col">{{ form.avgPace.label }} {{ form.avgPace(value=activity[12]) }}</div>
             <div class="w-100"></div>
             </div>
             <div class="row">
-            <div class="col">{{ form.elevGain.label }} {{ form.elevGain(placeholder="Everest today?") }}</div>
+            <div class="col">{{ form.elevGain.label }} {{ form.elevGain(value=activity[13]) }}</div>
             <div class="w-100"></div>
             </div>
             <div class="row">
-            <div class="col">{{ form.elevLoss.label }} {{ form.elevLoss(placeholder="Diving?") }}</div>
+            <div class="col">{{ form.elevLoss.label }} {{ form.elevLoss(value=activity[14]) }}</div>
             <div class="w-100"></div>
             </div>
             <div class="row">
-            <div class="col">{{ form.avgStrideLength.label }} {{ form.avgStrideLength(placeholder="Kangaroo?") }}</div>
+            <div class="col">{{ form.avgStrideLength.label }} {{ form.avgStrideLength(value=activity[15]) }}</div>
             <div class="w-100"></div>
             </div>
 

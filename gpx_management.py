@@ -3,6 +3,7 @@ from geopy.distance import geodesic
 import datetime
 import os, fnmatch
 import io
+import strava
 
 
 def load_file():
@@ -36,21 +37,6 @@ def delet_old():
     for filename in os.listdir(cwd2):
         if filename.endswith(".gpx") or filename.endswith(".GPX"):
             os.remove(cwd2+'/'+filename)
-
-def name():
-    try:
-        root = load_file()
-
-        name = root.xpath('//ns:name', namespaces={'ns': namespacetwo})
-
-        name = str(name[0])
-
-        name = name.replace('Running','')
-
-        return name
-    except:
-        name = ''
-        return name
 
 def date():
     try:
@@ -132,7 +118,19 @@ def cadence():
         avg_cadence=''
         return max_cadence, avg_cadence
 
+def location():
+    root = load_file()
+    lat= root.trk.trkseg.trkpt[0].attrib['lat']
+    lon= root.trk.trkseg.trkpt[0].attrib['lon']
+    coordinates = str(lat) + ',' + str(lon)
+    location = strava.getLocation(coordinates)
+
+    return location
+
+
 def distance():
+
+    location()
     try:
         root = load_file()
         listLen = len(root.trk.trkseg.trkpt)-1
