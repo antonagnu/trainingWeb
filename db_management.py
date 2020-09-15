@@ -4,6 +4,7 @@ import pandas as pd
 import datetime
 import traceback
 
+
 def insert(acType, actDate, actRace, actLocation, actDistance, actCalories, actTime, actAvgHr, actMaxHr, actAvgCadence, actMaxCadence, actAvgPace, actElevGain, actElevLoss, actStrideLen):
 
     try:
@@ -24,18 +25,15 @@ def insert(acType, actDate, actRace, actLocation, actDistance, actCalories, actT
 
 
 def update(acType, actDate, actRace, actLocation, actDistance, actCalories, actTime, actAvgHr, actMaxHr, actAvgCadence, actMaxCadence, actAvgPace, actElevGain, actElevLoss, actStrideLen):
-    
-    #UPDATE activitiesTb SET Calories="100" WHERE date="2020-09-07" and Distance="4.77"
 
+    print(str(actDate))
     try:
         conn=sqlite3.connect("runningLog.sqlite")
         cur=conn.cursor()
-        #sql = "UPDATE activitiesTb SET Calories = {} WHERE date = {}".format('100', '"2020-09-06"') WORKING
-        sql = "UPDATE activitiesTb SET ActivityType = ?, Date= ?, Race= ?, Title= ?, Distance= ?, Calories= ?, Time= ?, AvgHR= ?, MaxHR= ?, AvgCadence= ?, MAxCadence= ?, AvgPace= ?, ElevGain= ?, ElevLoss= ?, AvgStrideLength= ? WHERE date = ?"
+        sql = ('UPDATE activitiesTb SET ActivityType = ?, Date= ?, Race= ?, Title= ?, Distance= ?, Calories= ?, Time= ?, AvgHR= ?, MaxHR= ?, AvgCadence= ?, MAxCadence= ?, AvgPace= ?, ElevGain= ?, ElevLoss= ?, AvgStrideLength= ? WHERE date = ?')
         update_data = (str(acType), str(actDate), str(actRace), str(actLocation), str(actDistance), str(actCalories), str(actTime), str(actAvgHr), str(actMaxHr), str(actAvgCadence), str(actMaxCadence), str(actAvgPace), str(actElevGain), str(actElevLoss), str(actStrideLen), str(actDate))
 
-
-        cur.execute(update_data,sql)
+        cur.execute(sql, update_data)
         conn.commit()
         conn.close()
 

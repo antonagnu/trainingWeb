@@ -55,6 +55,8 @@ def connectStrava(tokenStrava):
         client = stravaConf.loc[ 'client' , : ]
         secret = stravaConf.loc[ 'secret' , : ]
 
+        print(client)
+
         client = str(client[0])
         secret = str(secret[0])
 
@@ -90,12 +92,39 @@ def getActivities():
         r = requests.get(url + '?access_token=' + access_token + '&per_page=200' + '&after=' + str(unixDate) + '&page=' + str(page))
         r = r.json()
 
-        activities = pd.DataFrame(r)
+        col = ['distance','moving_time','total_elevation_gain','type','start_date','average_speed','average_cadence','average_heartrate','max_heartrate','start_latlng']
+
+        total = len(r)
+        length = len(col) 
+        i = 0
+        z = 0
+
+        newData=[]
+
+        while i < total:
+            act = r[i]
+            
+            while z < length:
+                colCheck = col[z]
+                
+                if act.get(colCheck) is not None:
+                    newData.append(act)
+                else:
+                    act.update({ colCheck : 0 })
+                    
+                    newData.append(act)
+                
+                z += 1
+
+            
+            i += 1
+
+        activities = pd.DataFrame(newData)
         
         activitiesRun = activities.loc[activities['type'] == 'Run']
 
         columns = activitiesRun[['distance','moving_time','total_elevation_gain','type','start_date','average_speed','average_cadence','average_heartrate','max_heartrate','start_latlng']]
-
+       
         activitiesFiltered = columns.copy()
 
         activitiesFilteredOk = formatActivities(activitiesFiltered)
@@ -110,7 +139,6 @@ def formatActivities(df):
     try:
 
         pandLen = len(df)
-        pandLen
 
         formattedData = pd.DataFrame(columns=['distance','moving_time','total_elevation_gain','type','start_date','average_speed','average_cadence','average_heartrate','max_heartrate','start_latlng'])
 

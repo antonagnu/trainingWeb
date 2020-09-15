@@ -30,12 +30,12 @@ def home():
 @app.route('/view_data')
 def view_data():
     #this will show last 100 activities
-    return render_template("view_data.html", results=db_management.view())
+    return render_template("view_data.html", results=db_management.view(), allData=False)
 
 @app.route('/view_data_all')
 def view_data_all():
     #this will show all the activities in the db
-    return render_template("view_data.html", results=db_management.viewAll())
+    return render_template("view_data.html", results=db_management.viewAll(), allData=True)
 
 @app.route('/overview', methods=("POST", "GET"))
 def overview():
@@ -355,7 +355,7 @@ def stravaUrl():
 
     else:
         #call url to get strava token
-        return redirect('Url')
+        return redirect(Url)
 
 @app.route('/stravaConf', methods=("POST", "GET"))
 def stravaConf():

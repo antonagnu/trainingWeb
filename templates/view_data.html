@@ -3,9 +3,15 @@
 {% block header %}
 <!-- Training table from SQL-->
 
+{% if allData == True %}
+
+{%else %}
+
 <blockquote class="blockquote text-center">
   <p class="mb-0">Below table contains your last 100 activities; if you want to navigate the full list, please <a href="/view_data_all" class="badge badge-info">click here</a></p>
 </blockquote>
+
+{%endif%}
 
 <form method="POST">
   <table class="table table-hover">
