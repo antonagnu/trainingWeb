@@ -1,6 +1,6 @@
 ![home page](https://github.com/antonagnu/trainingWeb/blob/master/static/homeRunWeb.png)
 
-# trainingWeb
+# Running manager
 I am creating this Python & Flask web to manage my personal running information.
 
 The web let you create a new running activity manually, using a gpx file or connecting to the Strava API
