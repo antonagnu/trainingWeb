@@ -42,9 +42,7 @@
       {% for activityList in activityList %}
       <tr>
           <td>
-            <a href="/insert_strava?date={{activityList[4]}}&dist={{activityList[0]}}&time={{activityList[1]}}&avghr={{activityList[7]}}&maxhr={{activityList[8]}}&cad={{activityList[6]}}&pace={{activityList[5]}}&elev={{activityList[2]}}">
-                <button type="button" class="btn btn-primary btn-xs">Insert</button>
-              </a>
+            <a href="/insert_strava?date={{activityList[4]}}&dist={{activityList[0]}}&time={{activityList[1]}}&avghr={{activityList[7]}}&maxhr={{activityList[8]}}&cad={{activityList[6]}}&pace={{activityList[5]}}&elev={{activityList[2]}}&loc={{activityList[9]}}"class="badge badge-success">Insert</a>
           </td>
           <td>{{ activityList[3] }}</td>
           <td>{{ activityList[4] }}</td>
@@ -81,9 +79,7 @@
         {% for activityList in activityList %}
         <tr>
             <td>
-              <a href="/insert_strava?date={{activityList[4]}}&dist={{activityList[0]}}&time={{activityList[1]}}&avghr={{activityList[7]}}&maxhr={{activityList[8]}}&cad={{activityList[6]}}&pace={{activityList[5]}}&elev={{activityList[2]}}">
-                  <button type="button" class="btn btn-primary btn-xs">Insert</button>
-                </a>
+              <a href="/insert_strava?date={{activityList[4]}}&dist={{activityList[0]}}&time={{activityList[1]}}&avghr={{activityList[7]}}&maxhr={{activityList[8]}}&cad={{activityList[6]}}&pace={{activityList[5]}}&elev={{activityList[2]}}&loc={{activityList[9]}}" class="badge badge-success">Insert</a>
             </td>
             <td>{{ activityList[3] }}</td>
             <td>{{ activityList[4] }}</td>
