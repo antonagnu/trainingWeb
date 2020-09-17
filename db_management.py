@@ -26,7 +26,6 @@ def insert(acType, actDate, actRace, actLocation, actDistance, actCalories, actT
 
 def update(acType, actDate, actRace, actLocation, actDistance, actCalories, actTime, actAvgHr, actMaxHr, actAvgCadence, actMaxCadence, actAvgPace, actElevGain, actElevLoss, actStrideLen):
 
-    print(str(actDate))
     try:
         conn=sqlite3.connect("runningLog.sqlite")
         cur=conn.cursor()
