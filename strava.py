@@ -55,8 +55,6 @@ def connectStrava(tokenStrava):
         client = stravaConf.loc[ 'client' , : ]
         secret = stravaConf.loc[ 'secret' , : ]
 
-        print(client)
-
         client = str(client[0])
         secret = str(secret[0])
 
@@ -96,6 +94,7 @@ def getActivities():
 
         total = len(r)
         length = len(col) 
+
         i = 0
         z = 0
 
@@ -103,31 +102,37 @@ def getActivities():
 
         while i < total:
             act = r[i]
+            actT = act['type']
             
-            while z < length:
-                colCheck = col[z]
-                
-                if act.get(colCheck) is not None:
-                    newData.append(act)
-                else:
-                    act.update({ colCheck : 0 })
-                    
-                    newData.append(act)
-                
-                z += 1
+            if actT == 'Run':
 
+                z = 0
+
+                while z < length:
+                    colCheck = col[z]
+
+                    if act.get(colCheck) is not None:
+                        pass
+                    else:
+                        act.update({ colCheck : 0 })
+    
+                    z +=1
+                newData.append(act)
             
+            else:
+                pass
+
             i += 1
 
-        activities = pd.DataFrame(newData)
-        
-        activitiesRun = activities.loc[activities['type'] == 'Run']
+        activitiesRun = pd.DataFrame(newData)
+     
 
         columns = activitiesRun[['distance','moving_time','total_elevation_gain','type','start_date','average_speed','average_cadence','average_heartrate','max_heartrate','start_latlng']]
-       
+
         activitiesFiltered = columns.copy()
 
         activitiesFilteredOk = formatActivities(activitiesFiltered)
+
 
         return activitiesFilteredOk
 
@@ -144,6 +149,7 @@ def formatActivities(df):
 
         i = 0
         while i < pandLen:
+
             newData = df.iloc[i]
             #Format time
             try:
@@ -201,7 +207,7 @@ def formatActivities(df):
                 newData.at['average_speed'] = paceOk
             except:
                 newData.at['average_speed'] = 0
-            
+            #Format location
             try:
                 location=newData['start_latlng']
                 lat=location[0]
