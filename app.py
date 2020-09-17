@@ -391,7 +391,6 @@ def insert_strava():
     ElevLoss = 0
     StrideLen=0
     Race = 0
-    #Location = 'Milton Keynes'
     Location = request.args.get('loc')
 
     duplicate = db_management.find_duplicates(Date,Distance)
