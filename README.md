@@ -1,4 +1,4 @@
-![home page](https://github.com/antonagnu/trainingWeb/blob/master/static/homeRunWeb.png)
+![home page](https://github.com/antonagnu/trainingWeb/blob/main/static/homeRunWeb.png)
 
 # Running manager
 I am creating this Python & Flask web to manage my personal running information.
