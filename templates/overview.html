@@ -1,0 +1,117 @@
+{% extends "template.html" %}
+
+{% block header %}
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4" style="text-align:center">Information based on {{ actCount[0] }} training activities</h1>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card border-dark mb-3" style="max-width: 18rem;">
+        <div class="card-header"><p style="text-align:center"><strong>Longest Distance</strong></p></div>
+        <div class="card-body">
+          <p class="card-text" style="text-align:center">{{ longest[0] }} Kilometers on  {{ '{:.10}'.format(longest[1]) }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card border-dark mb-3" style="max-width: 18rem;">
+        <div class="card-header"><p style="text-align:center"><strong>Total Distance Run</strong></p></div>
+        <div class="card-body">
+          <p class="card-text" style="text-align:center">{{ '{:.7}'.format(totalDist[0])}} Kilometers</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card border-dark mb-3" style="max-width: 18rem;">
+        <div class="card-header"><p style="text-align:center"><strong>Max.Elevation Gain on a run</strong></p></div>
+        <div class="card-body">
+          <p class="card-text" style="text-align:center">{{ maxElev[0] }} Meters on  {{ '{:.10}'.format(maxElev[1]) }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card border-dark mb-3" style="max-width: 18rem;">
+        <div class="card-header"><p style="text-align:center"><strong>Total Elevation Run</strong></p></div>
+        <div class="card-body">
+          <p class="card-text" style="text-align:center">{{ '{:.6}'.format(totalElev[0])}} Meters</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card border-dark mb-3" style="max-width: 18rem;">
+        <div class="card-header"><p style="text-align:center"><strong>Max Hr registered</strong></p></div>
+        <div class="card-body">
+          <p class="card-text" style="text-align:center">{{ maxHr[0]}} bpm</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card border-dark mb-3" style="max-width: 18rem;">
+        <div class="card-header"><p style="text-align:center"><strong>Average Hr</strong></p></div>
+        <div class="card-body">
+          <p class="card-text" style="text-align:center">{{ avgHr[0]}} bpm</p>
+        </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card border-dark mb-3" style="max-width: 18rem;">
+        <div class="card-header"><p style="text-align:center"><strong>Best Year Distance</strong></p></div>
+        <div class="card-body">
+          <p class="card-text" style="text-align:center">{{ bestYearDistance }} Kms on {{ bestYearDate }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card border-dark mb-3" style="max-width: 18rem;">
+        <div class="card-header"><p style="text-align:center"><strong>Best Month Distance</strong></p></div>
+        <div class="card-body">
+          <p class="card-text" style="text-align:center">{{ bestMonth[0] }} kms on {{ bestMonth[1] }}</p>
+        </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card border-dark mb-3" style="max-width: 18rem;">
+        <div class="card-header"><p style="text-align:center"><strong>Your usual location</strong></p></div>
+        <div class="card-body">
+          <p class="card-text" style="text-align:center">You have run {{ usualLocation[0] }} times in {{ usualLocation[1] }} </p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card border-dark mb-3" style="max-width: 18rem;">
+        <div class="card-header"><p style="text-align:center"><strong>Best Week Distance</strong></p></div>
+        <div class="card-body">
+          <p class="card-text" style="text-align:center">{{ bestWeek[0] }} kms on {{ bestWeek[1] }}</p>
+        </div>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+
+{% endblock %}

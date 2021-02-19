@@ -1,0 +1,58 @@
+{% extends "template.html" %}
+
+{% block header %}
+<!-- Training table from SQL-->
+
+{% if allData == True %}
+
+{%else %}
+
+<blockquote class="blockquote text-center">
+  <p class="mb-0">Below table contains your last 100 activities; if you want to navigate the full list, please <a href="/view_data_all" class="badge badge-info">click here</a></p>
+</blockquote>
+
+{%endif%}
+
+<form method="POST">
+  <table class="table table-hover">
+  <thead class="thead-dark">
+      <tr>
+        <th>Delete</th>
+        <th>Details</th>
+        <th>Type</th>
+        <th>Date</th>
+        <th>Distance</th>
+        <th>Time</th>
+        <th>Avg HR</th>
+        <th>Max HR</th>
+        <th>Avg Cadence</th>
+        <th>Avg Pace</th>
+        <th>Elev Gain</th>
+      <tr>
+  </thead>
+  <tbody>
+      {% for results in results %}
+      <tr>
+          <td><a href="/confirm_delete?date={{results[2]}}&dist={{results[5]}}"  class="badge badge-danger">Delete</a></td>
+          <td><a href="/details?date={{results[2]}}&dist={{results[5]}}"  class="badge badge-info">Details</a></td>
+          <td>{{ results[1] }}</td>
+          <td>{{ '{:.10}'.format(results[2]) }}</td>
+          <td>{{ results[5] }}</td>
+          <td>{{ '{:.8}'.format(results[7]) }}</td>
+          <td>{{ results[8] }}</td>
+          <td>{{ results[9] }}</td>
+          <td>{{ results[10] }}</td>
+          <td>{{ '{:.8}'.format(results[12]) }}</td>
+          <td>{{ results[13] }}</td>
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+
+<a href="/">
+
+<a class="btn btn-primary" href="/" role="button">Home</a>
+
+</form>
+
+{% endblock %}
